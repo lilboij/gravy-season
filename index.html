@@ -2609,8 +2609,8 @@ const sections = {
     ],
     choices: [
       { letter: "A", text: "Follow Dot's lead to the market to find Smudge.", condition: "Only if Dot is in your party.", requires: ["dot"], goto: "s17" },
-      { letter: "B", text: "You can't stay silent any longer! Tell Huey to play something in the town square.", goto: "s16c" },
-      { letter: "C", text: "Skip the market entirely and investigate the Clock Tower.", goto: "s18_direct" }
+      { letter: "B", text: "You can't stay silent any longer! Tell Huey to play something in the town square.", excludes: ["dot"], goto: "s16c" },
+      { letter: "C", text: "Skip the market entirely and investigate the Clock Tower.", excludes: ["dot"], goto: "s18_direct" }
     ]
   },
 
@@ -3579,6 +3579,7 @@ function renderSection(id) {
         // check condition
         if (c.conditionCheck && !c.conditionCheck()) continue;
         if (c.requires && c.requires.length > 0 && !c.requires.every(r => state.party[r])) continue;
+        if (c.excludes && c.excludes.some(r => state.party[r])) continue;
         html += `<button class="choice-btn" data-idx="${i}" onclick="handleChoice('${id}', ${i})">`;
         if (c.condition) html += `<span class="choice-condition">${c.condition}</span>`;
         html += `<span class="choice-letter">${c.letter}</span>${c.text}`;
