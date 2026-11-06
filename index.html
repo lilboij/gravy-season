@@ -13,11 +13,8 @@
   }
   html, body {
     background: #FAF6EE !important;
-    min-height: 100%;
-    overscroll-behavior-y: none;
-  }
-  html {
     height: 100%;
+    overflow-y: auto;
   }
   @media (prefers-color-scheme: dark) {
     html, body, * {
@@ -25,7 +22,7 @@
       color: unset;
       border-color: unset;
     }
-    html { background: #FAF6EE !important; overscroll-behavior-y: none; }
+    html { background: #FAF6EE !important; }
     body {
       background: #FAF6EE !important;
       color: #2A1F0E !important;
@@ -5474,16 +5471,6 @@ function nodeMapJumpToSection() {
 window.nodeMapJumpToSection = nodeMapJumpToSection;
 
 })(); // end node map IIFE
-
-// ── IFRAME RESIZE (postMessage to parent for Squarespace embed) ──
-function notifyParentHeight() {
-  const h = document.body.scrollHeight;
-  if (window.parent !== window) {
-    window.parent.postMessage({ type: 'resize', height: h }, '*');
-  }
-}
-const _resizeObserver = new ResizeObserver(notifyParentHeight);
-_resizeObserver.observe(document.body);
 
 // ── START ──
 renderSection('start');
