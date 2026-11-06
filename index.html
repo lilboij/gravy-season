@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
+<meta name="theme-color" content="#FAF6EE">
 <title>Gravy Season &amp; the Gray Tide</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&amp;family=IM+Fell+English:ital@0;1&amp;display=swap" rel="stylesheet">
 <style>
@@ -12,6 +13,7 @@
   }
   html {
     background: #FAF6EE !important;
+    overscroll-behavior-y: none;
   }
   @media (prefers-color-scheme: dark) {
     html, body, * {
@@ -19,7 +21,7 @@
       color: unset;
       border-color: unset;
     }
-    html { background: #FAF6EE !important; }
+    html { background: #FAF6EE !important; overscroll-behavior-y: none; }
     body {
       background: #FAF6EE !important;
       color: #2A1F0E !important;
@@ -52,6 +54,7 @@
     font-size: 18px;
     line-height: 1.75;
     min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     background-image:
       radial-gradient(ellipse at 20% 20%, rgba(139,105,20,0.06) 0%, transparent 60%),
       radial-gradient(ellipse at 80% 80%, rgba(122,31,31,0.05) 0%, transparent 60%);
