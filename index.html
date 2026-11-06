@@ -5475,6 +5475,16 @@ window.nodeMapJumpToSection = nodeMapJumpToSection;
 
 })(); // end node map IIFE
 
+// ── IFRAME RESIZE (postMessage to parent for Squarespace embed) ──
+function notifyParentHeight() {
+  const h = document.body.scrollHeight;
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: 'resize', height: h }, '*');
+  }
+}
+const _resizeObserver = new ResizeObserver(notifyParentHeight);
+_resizeObserver.observe(document.body);
+
 // ── START ──
 renderSection('start');
 </script>
