@@ -2792,7 +2792,7 @@ const sections = {
       "\"Wow! I'm glad we didn't end up stealing that then!\" Smudge says. Dot elbows him in the ribs, \"OW! I mean... I'm glad we didn't <em>drop</em> it!\"",
       "\"So what do you say? Should we go save the world?\" GB-1 says with a big grin on her screen."
     ],
-    onEnter: () => { joinParty('gb1'); },
+    onEnter: () => { joinParty('dot'); joinParty('smudge'); joinParty('gb1'); },
     choices: [
       { letter: "✦", text: "Leave the tower and continue your adventure.", goto: "s30" }
     ]
@@ -2811,7 +2811,7 @@ const sections = {
       "\"Wow! You really did it!\" You exclaim! \"Now we have a weapon to fight Monocros!\"",
       "\"So what do you say? Should we go save the world?\" GB-1 says with a big grin on her screen."
     ],
-    onEnter: () => { joinParty('gb1'); },
+    onEnter: () => { joinParty('dot'); joinParty('smudge'); joinParty('gb1'); },
     choices: [
       { letter: "✦", text: "Leave the tower and continue your adventure.", goto: "s30" }
     ]
