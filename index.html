@@ -237,6 +237,9 @@
   }
 
   /* ── ART PLACEHOLDER ── */
+  /* Hide art panels that have no image yet; remove this rule when art is ready */
+  .art-panel:not(.has-img) { display: none !important; }
+
   .art-panel {
     margin: 16px 20px;
     border: 1.5px dashed #E0D0B0;
