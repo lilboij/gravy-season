@@ -3572,7 +3572,7 @@ function renderSection(id) {
       if (sec.art && !sec.artCenter) html += artPlaceholder(sec.art, sec.artHeight || 160, id);
       for (let pi = 0; pi < sec.body.length; pi++) {
         html += `<p>${sec.body[pi]}</p>`;
-        if (sec.art && sec.artCenter && pi === 0) html += artPlaceholder(sec.art, sec.artHeight || 160, id);
+        if (sec.art && sec.artCenter && pi === 1) html += artPlaceholder(sec.art, sec.artHeight || 160, id);
       }
       html += `</div>`;
     } else if (sec.art) {
