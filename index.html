@@ -259,6 +259,20 @@
     position: relative;
     overflow: hidden;
   }
+  /* When an image is present: float right as a spot illustration */
+  .art-panel.has-img {
+    float: right;
+    clear: right;
+    width: 240px;
+    min-height: unset;
+    margin: 0 0 16px 24px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+    display: block;
+    position: relative;
+  }
   .art-panel img {
     position: absolute;
     inset: 0;
@@ -266,6 +280,15 @@
     height: 100%;
     object-fit: cover;
     border-radius: 4px;
+  }
+  /* Uncrop the image when floating as spot illustration */
+  .art-panel.has-img img {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    display: block;
   }
   .art-panel.has-img svg,
   .art-panel.has-img .art-label { display: none; }
@@ -3523,11 +3546,6 @@ function renderSection(id) {
       <div class="act-rule"><hr><span>✦</span><hr></div>`;
     }
 
-    // Art panel
-    if (sec.art) {
-      html += artPlaceholder(sec.art, sec.artHeight || 160, id);
-    }
-
     // Section header
     if (sec.sectionNum || sec.title) {
       html += `<div class="section-header">
@@ -3537,11 +3555,15 @@ function renderSection(id) {
       <div class="section-rule"></div>`;
     }
 
-    // Body
+    // Body (art panel floats right inside the body when present)
     if (sec.body && sec.body.length) {
-      html += `<div class="section-body">`;
+      html += `<div class="section-body" style="overflow:hidden">`;
+      if (sec.art) html += artPlaceholder(sec.art, sec.artHeight || 160, id);
       for (const p of sec.body) html += `<p>${p}</p>`;
       html += `</div>`;
+    } else if (sec.art) {
+      // No body text — still render art panel
+      html += artPlaceholder(sec.art, sec.artHeight || 160, id);
     }
 
     // bodySegments: each segment renders only if its requires[] are all in party
