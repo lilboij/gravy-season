@@ -3586,7 +3586,7 @@ function renderSection(id) {
     // Body (art panel floats right inside the body when present)
     if (sec.body && sec.body.length) {
       html += `<div class="section-body" style="overflow:hidden">`;
-      const artAfterIdx = (sec.art && (sec.artCenter || sec.artFloat)) ? (sec.artAfter != null ? sec.artAfter : (sec.artCenter ? 1 : null)) : null;
+      const artAfterIdx = (sec.art && (sec.artCenter || sec.artFloat || sec.artAfter != null)) ? (sec.artAfter != null ? sec.artAfter : (sec.artCenter ? 1 : null)) : null;
       if (sec.art && artAfterIdx == null) html += artPlaceholder(sec.art, sec.artHeight || 160, id);
       for (let pi = 0; pi < sec.body.length; pi++) {
         html += `<p>${sec.body[pi]}</p>`;
