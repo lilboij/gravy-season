@@ -2721,6 +2721,7 @@ const sections = {
 
   "s18_heist": {
     sectionNum: "Section 18", title: "The Mages Tower",
+    artAfter: 2,
     body: [
       "The Clock Tower stands at the center of Cinderwick. It looms like a mechanical giant over the town with its enormous hands ticking away monotonously. As you observe from your hiding place, you see a curious light flicker behind the clock face. The wizard must be up there.",
       "Smudge picks the lock to the door and you quietly make your way up the stairs. The stairs open up to a massive room behind the clock face, gears and other mechanical stuff fill the space, but that's not all. Chalkboards with messy runes and equations scribbled on them, tables stacked with tomes and chemistry supplies, and at the center of the room a pedestal with a glowing stone beneath a glass dome.",
@@ -3439,6 +3440,10 @@ function computeOverrides() {
 
 // Re-apply edits from a previous export, if this file was exported before.
 applyOverrides(window.__exportedOverrides);
+
+// Share GB-1's art image across all sections where she is introduced
+sections['s18_heist'].art = sections['s18_direct'].art;
+sections['s18_heist'].artImage = sections['s18_direct'].artImage;
 
 function joinParty(name) {
   if (state.party[name]) return;
